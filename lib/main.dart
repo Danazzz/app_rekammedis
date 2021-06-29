@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future getData()async{
     var url = 'http://192.168.18.45/app_uas/dokter/getdata.php';
-    var response = await http.get(url);
+    var response = await http.get(Uri.parse(url));
     return json.decode(response.body);
   }
 
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: (){
                       setState(() {
                         var url = 'http://192.168.18.45/app_uas/dokter/del.php';
-                        http.post(url,body: {
+                        http.post(Uri.parse(url),body: {
                           'id' : list[index]['id'],
                         });
                       });

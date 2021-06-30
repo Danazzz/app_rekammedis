@@ -1,18 +1,9 @@
-# flutter_mysql_crud
+# CRUD_Dokter
 
+Tugas UAS CRUD menggunakan flutter untuk frontend dan PHP untuk Backend.
 
+Nama: I Nyoman Gde Artadana Mahaputra W.
+NIM: 41930026
+Fak/Jur: FTI/ Teknologi Informasi
 
- ## Home Page
-<img src="images/1st.png" width="220" height="420" >
-
-
- ## Add Data
-<img src="images/add.png" width="220" height="420" >
-
-
- ## Edit Data
-<img src="images/2nd.png" width="220" height="420" >
-
-
- ## Delete Data
-<img src="images/3rd.png" width="220" height="420" >
+Universitas Pendidikan Nasional University

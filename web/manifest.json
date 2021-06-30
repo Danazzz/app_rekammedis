@@ -1,6 +1,6 @@
 {
-    "name": "app_uas",
-    "short_name": "app_uas",
+    "name": "flutter_mysql_crud",
+    "short_name": "flutter_mysql_crud",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

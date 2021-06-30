@@ -1,16 +1,18 @@
-# app_uas
+# flutter_mysql_crud
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+ ## Home Page
+<img src="images/1st.png" width="220" height="420" >
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+ ## Add Data
+<img src="images/add.png" width="220" height="420" >
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+ ## Edit Data
+<img src="images/2nd.png" width="220" height="420" >
+
+
+ ## Delete Data
+<img src="images/3rd.png" width="220" height="420" >

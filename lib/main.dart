@@ -1,95 +1,96 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:app_uas/crud.dart';
+import 'dart:async';
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(MyApp());
+import 'details.dart';
+import 'newdata.dart';
+
+void main()=>runApp(MaterialApp(
+  title: "CRUD Dokter",
+  debugShowCheckedModeBanner: false,
+  theme: ThemeData(
+    primarySwatch: Colors.red,
+
+  ),
+  home: Home(),
+));
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'CRUD Dokter',
-      theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+class _HomeState extends State<Home> {
 
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  Future getData()async{
-    var url = 'http://192.168.18.45/app_uas/_api/getdata.php';
-    var response = await http.get(Uri.parse(url));
-    return json.decode(response.body);
+  Future<List> getData() async{
+    final responce = await http.get("http://192.168.18.45/app_uas/_api/getdata.php");
+    return jsonDecode(responce.body);
   }
 
-
-  @override
-  void initState() {
-    super.initState();
-
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CRUD Dokter'),
+        title: Text("CRUD Dokter"),
       ),
       floatingActionButton: FloatingActionButton(
+        onPressed: ()=>Navigator.of(context).push(
+          MaterialPageRoute(
+
+            builder: (BuildContext contex)=> NewData(),
+            
+          ),
+        ),
         child: Icon(Icons.add),
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AddEditPage(list: list,index: index,),),);
-          debugPrint('Clicked FloatingActionButton Button');
-        },
       ),
-      body: FutureBuilder(
+      body:FutureBuilder<List>(
         future: getData(),
-        builder: (context,snapshot){
-          if(snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData
-              ? ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context,index){
-                List list = snapshot.data;
-                return ListTile(
-                  leading: GestureDetector(child: Icon(Icons.edit),
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddEditPage(list: list,index: index,),),);
-                    debugPrint('Edit Clicked');
-                  },),
-                  title: Text(list[index]['Spesialis']),
-                  subtitle: Text(list[index]['No.telp']),
-                  trailing: GestureDetector(child: Icon(Icons.delete),
-                    onTap: (){
-                      setState(() {
-                        var url = 'http://192.168.18.45/app_uas/_api/del.php';
-                        http.post(Uri.parse(url),body: {
-                          'id' : list[index]['id'],
-                        });
-                      });
-                      debugPrint('delete Clicked');
-                    },),
-                );
-              }
-          )
-              : CircularProgressIndicator();
+        builder: (ctx,ss) {
+          if(ss.hasError){
+            print("Error");
+          }
+          if(ss.hasData){
+            return Items(list:ss.data);
+
+          }
+          else{
+            return CircularProgressIndicator();
+
+          }
         },
       ),
     );
   }
 }
+
+// ignore: must_be_immutable
+class Items extends StatelessWidget {
+
+  List list;
+
+  Items({this.list});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+       itemCount: list==null?0:list.length,
+      itemBuilder: (ctx,i){
+        return ListTile(
+
+          leading: Icon(Icons.message),
+          title: Text(list[i]['nama']),
+          subtitle: Text(list[i]['spesialis']),
+          onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Details(list:list,index:i),
+
+          )),
+        );
+
+      }
+    );
+  }
+}
+

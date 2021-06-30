@@ -5,16 +5,18 @@ import 'package:app_uas/main.dart';
 class AddEditPage extends StatefulWidget {
   final List list;
   final int index;
-  AddEditPage({this.list,this.index});
+  AddEditPage({required this.list,required this.index});
   @override
   _AddEditPageState createState() => _AddEditPageState();
 }
 
 class _AddEditPageState extends State<AddEditPage> {
 
+  // ignore: non_constant_identifier_names
   TextEditingController nama_dokter = TextEditingController();
   TextEditingController spesialis = TextEditingController();
   TextEditingController alamat = TextEditingController();
+  // ignore: non_constant_identifier_names
   TextEditingController no_telp = TextEditingController();
 
   bool editMode = false;
@@ -46,6 +48,7 @@ class _AddEditPageState extends State<AddEditPage> {
   @override
   void initState() {
     super.initState();
+    // ignore: unnecessary_null_comparison
     if(widget.index != null){
       editMode = true;
       nama_dokter.text = widget.list[widget.index]['Nama'];
@@ -104,6 +107,7 @@ class _AddEditPageState extends State<AddEditPage> {
           ),
 
           Padding(padding: EdgeInsets.all(8),
+            // ignore: deprecated_member_use
             child: RaisedButton(
               onPressed: (){
                 setState(() {

@@ -1,5 +1,5 @@
 <?php 
-require_once"../_config/config.php";
+include_once("../_config/config.php");
 
 $id = $_POST['id'];
 $nama = trim(mysqli_real_escape_string($con, $_POST['nama']));

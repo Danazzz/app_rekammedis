@@ -24,7 +24,7 @@ class _AddEditPageState extends State<AddEditPage> {
 
   addUpdateData(){
     if(editMode){
-      var url = 'http://192.168.18.45/app_uas/dokter/edit.php';
+      var url = 'http://192.168.18.45/app_uas/_api/edit.php';
       http.post(Uri.parse(url),body: {
         'id' : widget.list[widget.index]['id'],
         'Nama' : nama_dokter.text,
@@ -33,7 +33,7 @@ class _AddEditPageState extends State<AddEditPage> {
         'Telepon' : no_telp.text,
       });
     }else{
-      var url = 'http://192.168.18.45/app_uas/dokter/add.php';
+      var url = 'http://192.168.18.45/app_uas/_api/add.php';
       http.post(Uri.parse(url),body: {
         'Nama' : nama_dokter.text,
         'Spesialis' : spesialis.text,

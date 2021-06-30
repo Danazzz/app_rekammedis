@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   Future getData()async{
-    var url = 'http://192.168.18.45/app_uas/dokter/getdata.php';
+    var url = 'http://192.168.18.45/app_uas/_api/getdata.php';
     var response = await http.get(Uri.parse(url));
     return json.decode(response.body);
   }
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   trailing: GestureDetector(child: Icon(Icons.delete),
                     onTap: (){
                       setState(() {
-                        var url = 'http://192.168.18.45/app_uas/dokter/del.php';
+                        var url = 'http://192.168.18.45/app_uas/_api/del.php';
                         http.post(Uri.parse(url),body: {
                           'id' : list[index]['id'],
                         });

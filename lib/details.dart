@@ -59,17 +59,17 @@ void confirm(){
     return Scaffold(
       appBar: AppBar(
 
-        title: Text('${widget.list[widget.index]['name']}'),
+        title: Text('${widget.list[widget.index]['nama']}'),
       ),
       body: Container(
         child: Column(
           children: [
             Text(
-          widget.list[widget.index]['name'],
+          widget.list[widget.index]['nama'],
           style: TextStyle(fontSize: 20.0),
         ),
             Text(
-              widget.list[widget.index]['mobile'],
+              widget.list[widget.index]['Spesialis'],
 
             ),
             MaterialButton(
